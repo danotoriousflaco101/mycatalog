@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Controller REST per gestire le operazioni CRUD sugli elementi multimediali.
- */
 @RestController
 @RequestMapping("/api/media")
-// Abilita le richieste Cross-Origin dal tuo sito web.
-// Sostituisci "http://www.theflacosite.com" con l'URL reale o usa "*" per testare localmente.
-@CrossOrigin(origins = {"http://www.theflacosite.com", "http://localhost:3000"})
+
+@CrossOrigin(origins = "*")
 public class MediaController {
 
     private final MediaService mediaService;
@@ -67,6 +63,6 @@ public class MediaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMediaItem(@PathVariable Long id) {
         mediaService.deleteMediaItem(id);
-        return ResponseEntity.noContent().build(); // Risposta 204 No Content
+        return ResponseEntity.noContent().build();
     }
 }
